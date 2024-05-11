@@ -23,8 +23,8 @@ metrics = ["opentelemetry/metrics","opentelemetry_sdk/metrics", "smallvec"]
 metrics_gauge_unstable = ["opentelemetry/otel_unstable"]
 
 [dependencies]
-opentelemetry = { version = "0.23.0", default-features = false, features = ["trace"] }
-opentelemetry_sdk = { version = "0.23.0", default-features = false, features = ["trace"] }
+opentelemetry = { git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "b44cb130e4a102b0d676289e91c003f4b1008d08", default-features = false, features = ["trace"] }
+opentelemetry_sdk = { git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "b44cb130e4a102b0d676289e91c003f4b1008d08", default-features = false, features = ["trace"] }
 tracing = { version = "0.1.35", default-features = false, features = ["std"] }
 tracing-core = "0.1.28"
 tracing-subscriber = { version = "0.3.0", default-features = false, features = ["registry", "std"] }
@@ -40,12 +40,12 @@ smallvec = { version = "1.0", optional = true }
 [dev-dependencies]
 async-trait = "0.1.56"
 criterion = { version = "0.5.1", default-features = false, features = ["html_reports"] }
-opentelemetry = { version = "0.23.0", features = ["trace", "metrics"] }
-opentelemetry_sdk = { version = "0.23.0", default-features = false, features = ["trace", "rt-tokio"] }
-opentelemetry-jaeger = "0.22.0"
-opentelemetry-stdout = { version = "0.4.0", features = ["trace", "metrics"] }
-opentelemetry-otlp = { version = "0.16.0", features = ["metrics"] }
-opentelemetry-semantic-conventions = "0.15.0"
+opentelemetry = { git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "b44cb130e4a102b0d676289e91c003f4b1008d08", features = ["trace", "metrics"] }
+opentelemetry_sdk = { git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "b44cb130e4a102b0d676289e91c003f4b1008d08", default-features = false, features = ["trace", "rt-tokio"] }
+opentelemetry-jaeger = { git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "b44cb130e4a102b0d676289e91c003f4b1008d08" }
+opentelemetry-stdout = { git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "b44cb130e4a102b0d676289e91c003f4b1008d08", features = ["trace", "metrics"] }
+opentelemetry-otlp = { git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "b44cb130e4a102b0d676289e91c003f4b1008d08", features = ["metrics"] }
+opentelemetry-semantic-conventions = { git = "https://github.com/open-telemetry/opentelemetry-rust.git", rev = "b44cb130e4a102b0d676289e91c003f4b1008d08" }
 futures-util = { version = "0.3.17", default-features = false }
 tokio = { version = "1", features = ["full"] }
 tokio-stream = "0.1"
@@ -74,3 +74,6 @@ harness = false
 [package.metadata.docs.rs]
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
+
+[patch.crates-io]
+tonic = { git = "https://github.com/hyperium/tonic.git", rev = "9b306af386528f11dbd022bc372d367adc4e96b5" }
